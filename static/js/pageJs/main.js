@@ -327,7 +327,7 @@
                 "F_EnCode": "lookMessage",
                 "F_FullName": "查看报文",
                 "F_Icon": "fa fa-leaf",
-                "F_UrlAddress": "/pages/default.html",
+                "F_UrlAddress": "/pages/worker.html",
                 "F_Target": "iframe",
                 "F_IsMenu": 1,
                 "F_AllowExpand": 1,

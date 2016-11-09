@@ -1,0 +1,11 @@
+body{
+    font-size: 12px;
+}
+/*提示框样式*/
+.po{
+    position: absolute;
+    display: none;
+    top: 35%;
+    left: 35%;
+    width: 300px;
+}
