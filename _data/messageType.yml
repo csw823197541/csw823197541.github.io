@@ -1,0 +1,28 @@
+- name: ID
+  id: id
+  visible: false
+  placeholder:
+
+- name: 报文类型
+  id: type
+  span: 1
+  placeholder: 请输入报文类型
+
+- name: 接收/发送
+  id: direction
+  span: 1
+  placeholder: 请输入接收/发送
+
+- name: 插件类名
+  id: className
+  span: 1
+  placeholder: 请输入插件类名
+
+- name: 处理方法
+  id: processMethod
+  span: 1
+  placeholder: 请输入处理方法
+
+- name: 备注
+  id: notes
+  placeholder: 请输入备注

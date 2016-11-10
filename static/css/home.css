@@ -1,11 +1,19 @@
-body{
+body {
     font-size: 12px;
 }
+
 /*提示框样式*/
-.po{
+.po {
     position: absolute;
     display: none;
     top: 35%;
     left: 35%;
     width: 300px;
+}
+
+.tableUnit {
+    text-overflow: ellipsis; /* for IE */
+    -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
+    overflow: hidden;
+    white-space: nowrap;
 }

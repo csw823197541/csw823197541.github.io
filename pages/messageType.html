@@ -1,0 +1,66 @@
+---
+layout: base_page
+---
+
+{% include temp/table.html inData = site.data.messageType apiName = 'messageTypes' %}
+
+<script type="text/javascript">
+
+    var tableGen = new TableGen();
+    tableGen.editFields = new Array('id', 'type', 'direction', 'className', 'processMethod', 'note');
+
+//    tableGen.validates = {userName: "notEmpty", password: "notEmpty"};
+    tableGen.setTable = function (inTable) {
+        inTable.bootstrapTable({
+            height: $(window).height(),
+            columns: [{
+                field: 'state',
+                checkbox: true,
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: 'ID',
+                field: 'id',
+                align: 'center',
+                sortable: true,
+                width: "6%",
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '报文类型',
+                field: 'type',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '接收/发送',
+                field: 'direction',
+                align: 'center'
+            }, {
+                title: '插件类名',
+                field: 'className',
+                align: 'center'
+            }, {
+                title: '处理方法',
+                field: 'processMethod',
+                align: 'center'
+            },{
+                title: '备注',
+                field: 'note',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '操作',
+                field: 'operate',
+                align: 'center',
+                valign: 'middle',
+                formatter: tableGen.operateFormatter,
+                events: operateEvents
+            }]
+        });
+    }
+
+    window.operateEvents = tableGen.operationEvent();
+
+    tableGen.apiName = 'messages';
+    tableGen.bind();
+
+</script>

@@ -1,0 +1,109 @@
+---
+layout: base_page
+---
+
+{% include temp/table.html inData = site.data.message apiName = 'messages' %}
+
+<script type="text/javascript">
+
+    var tableGen = new TableGen();
+    tableGen.editFields = new Array('id', 'messageType', 'messageId', 'unitId', 'vesselVisitId', 'billNo', 'manual', 'status', 'reason', 'sendTime', 'createTime', 'note', 'messageDetail');
+
+    tableGen.validates = {userName: "notEmpty", password: "notEmpty"};
+    tableGen.setTable = function (inTable) {
+        inTable.bootstrapTable({
+            height: $(window).height(),
+            columns: [{
+                field: 'state',
+                checkbox: true,
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: 'ID',
+                field: 'id',
+                align: 'center',
+                sortable: true,
+                width: "6%",
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '报文类型',
+                field: 'messageType',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '报文ID',
+                field: 'messageId',
+                align: 'center',
+                width: "14%",
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '箱号',
+                field: 'unitId',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '航次',
+                field: 'vesselVisitId',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '提单号',
+                field: 'billNo',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '处理方式',
+                field: 'manual',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '报文状态',
+                field: 'status',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '状态原因',
+                field: 'reason',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            },{
+                title: '发送日期',
+                field: 'sendTime',
+                align: 'center',
+                cellStyle: tableGen.formatTableUnit
+            },{
+                title: '创建日期',
+                field: 'createTime',
+                align: 'center',
+                visible: false,
+                cellStyle: tableGen.formatTableUnit
+            },{
+                title: '备注',
+                field: 'note',
+                align: 'center',
+                visible: false,
+                cellStyle: tableGen.formatTableUnit
+            },{
+                title: '报文详情',
+                field: 'messageDetail',
+                align: 'center',
+                visible: false,
+                cellStyle: tableGen.formatTableUnit
+            }, {
+                title: '操作',
+                field: 'operate',
+                align: 'center',
+                valign: 'middle',
+                width: "8%",
+                formatter: tableGen.operateFormatter,
+                events: operateEvents
+            }]
+        });
+    }
+
+    window.operateEvents = tableGen.operationEvent();
+
+    tableGen.apiName = 'messages';
+    tableGen.bind();
+
+</script>

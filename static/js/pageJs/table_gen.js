@@ -135,6 +135,19 @@ TableGen.prototype.operateFormatter = function (value, row, index) {
 //密码隐藏显示方法
 TableGen.prototype.pwdFormatter = function (value, row, index) {
     return ['<i class="fa fa-key fa-fw"></i>'].join('');
+};
+
+//隐藏单元格多余的内容
+TableGen.prototype.formatTableUnit = function (value, row, index) {
+    return {classes: "tableUnit"};
+    //return {
+    //    css: {
+    //        "text-overflow": "ellipsis", /* for IE */
+    //        "-moz-text-overflow": "ellipsis", /* for Firefox,mozilla */
+    //        "overflow": "hidden",
+    //        "white-space": "nowrap"
+    //    }
+    //}
 }
 
 // 预设编辑事件方法
@@ -168,7 +181,8 @@ TableGen.prototype.operationEvent = function () {
 
 TableGen.prototype.loadData = function () {
     $.ajax({
-        url: API_URL + "/api/" + this.apiName,
+        //url: '{{ site.apiUrl }}' + "/api/" + this.apiName,
+        url: apiObjUrl,
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',

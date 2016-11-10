@@ -1,27 +1,26 @@
 <script>
-    var apiObjUrl = '{{ site.apiurl }}' + '/api/' + '{{ include.apiName }}';
+    var apiObjUrl = '{{ site.apiUrl }}' + '/api/' + '{{ include.apiName }}';
 </script>
 
-<div id="success" class="alert alert-success po">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>成功！&nbsp;</strong>操作成功！。
-</div>
+<!--<div id="success" class="alert alert-success po">-->
+<!--<a href="#" class="close" data-dismiss="alert">&times;</a>-->
+<!--<strong>成功！&nbsp;</strong>操作成功！。-->
+<!--</div>-->
 
-<div id="error" class="alert alert-danger po">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>失败！&nbsp;</strong>&nbsp;操作失败，请联系管理员。
-</div>
+<!--<div id="error" class="alert alert-danger po">-->
+<!--<a href="#" class="close" data-dismiss="alert">&times;</a>-->
+<!--<strong>失败！&nbsp;</strong>&nbsp;操作失败，请联系管理员。-->
+<!--</div>-->
 
-<div id="info" class="alert alert-info po">
-</div>
+<!--<div id="info" class="alert alert-info po">-->
+<!--</div>-->
 
-
-<div class="container" style="z-index: 1">
+<div class="container">
     <div id="toolbar">
-        <button id="add" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="font-size: 12px">
+        <button id="add" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
             <i class="glyphicon glyphicon-plus"></i> 添加
         </button>
-        <button id="remove" class="btn btn-danger" disabled style="font-size: 12px">
+        <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> 删除已选
         </button>
     </div>
@@ -40,11 +39,12 @@
            data-page-list="[10, 25, 50, 100, ALL]"
            datatype="json"
            data-local="zh-US"
+           style="table-layout: fixed"
             >
     </table>
 </div>
 <!-- Modal -->
-<div ng-app="app" ng-controller="ctrl" class="modal fade" id="myModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
