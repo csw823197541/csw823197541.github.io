@@ -10,7 +10,7 @@ title: sedi报文转发系统
 #apiurl: 'http://lekoxnfx.oicp.net:18020'
 #apiurl: 'http://server.xunda.tech:8080'
 #apiurl: 'http://192.168.1.100:8080'
-apiUrl: 'http://localhost:8080'
+apiAddress: 'http://localhost:8080'
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://csw823197541.github.io/" # the base hostname & protocol for your site
 twitter_username:

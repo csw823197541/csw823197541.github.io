@@ -1,15 +1,17 @@
 ---
 layout: base_page
 ---
-
-{% include temp/table.html inData = site.data.messageType apiName = 'messageTypes' %}
+{% include base/tip.html %}
+{% include base/table.html apiName = 'messageTypes' %}
+{% include base/modal.html inData = site.data.messageType %}
 
 <script type="text/javascript">
 
     var tableGen = new TableGen();
-    tableGen.editFields = new Array('id', 'type', 'direction', 'className', 'processMethod', 'note');
-
-//    tableGen.validates = {userName: "notEmpty", password: "notEmpty"};
+    tableGen.editFields = new Array('id', 'type', 'direction', 'className', 'processMethod', 'notes');
+    tableGen.apiName = 'messageTypes';
+    tableGen.modalID = 'myModal';
+    tableGen.tableID = 'table';
     tableGen.setTable = function (inTable) {
         inTable.bootstrapTable({
             height: $(window).height(),
@@ -24,43 +26,51 @@ layout: base_page
                 align: 'center',
                 sortable: true,
                 width: "6%",
-                cellStyle: tableGen.formatTableUnit
+                cellStyle: tableGen.formatTableCell
             }, {
                 title: '报文类型',
                 field: 'type',
                 align: 'center',
-                cellStyle: tableGen.formatTableUnit
+                cellStyle: tableGen.formatTableCell
             }, {
                 title: '接收/发送',
                 field: 'direction',
-                align: 'center'
+                align: 'center',
+                cellStyle: tableGen.formatTableCell
             }, {
                 title: '插件类名',
                 field: 'className',
-                align: 'center'
+                align: 'center',
+                cellStyle: tableGen.formatTableCell
             }, {
                 title: '处理方法',
                 field: 'processMethod',
-                align: 'center'
+                align: 'center',
+                cellStyle: tableGen.formatTableCell
             },{
                 title: '备注',
-                field: 'note',
+                field: 'notes',
                 align: 'center',
-                cellStyle: tableGen.formatTableUnit
+                cellStyle: tableGen.formatTableCell
             }, {
                 title: '操作',
                 field: 'operate',
                 align: 'center',
                 valign: 'middle',
+                width: "8%",
                 formatter: tableGen.operateFormatter,
                 events: operateEvents
             }]
         });
-    }
-
+    };
     window.operateEvents = tableGen.operationEvent();
-
-    tableGen.apiName = 'messages';
     tableGen.bind();
+
+    var modalGen = new ModalGen();
+    modalGen.editFields = new Array('id', 'type', 'direction', 'className', 'processMethod', 'notes');
+    modalGen.modalID = 'myModal';
+    modalGen.saveButtonID = 'saveObj';
+    modalGen.validates = {type: "notEmpty", className: "notEmpty"};
+    modalGen.bind();
 
 </script>

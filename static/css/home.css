@@ -11,7 +11,7 @@ body {
     width: 300px;
 }
 
-.tableUnit {
+.tableCell {
     text-overflow: ellipsis; /* for IE */
     -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
     overflow: hidden;
