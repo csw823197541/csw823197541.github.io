@@ -6,6 +6,7 @@
     <link href="static/css/login.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="/static/frameworks/jquery/jQuery-2.2.0.min.js"></script>
     <script type="text/javascript" src="/static/frameworks/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/js/pageJs/apiRequest.js"></script>
 </head>
 <body>
     <div class="login">
@@ -28,31 +29,26 @@
             var username = $("#username").val();
             var password = $("#password").val();
             var author_code = "Basic " + btoa(username + ":" + password);
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:8080/api/users/login?username=" + username +"&password=" + password,
-                //返回数据的格式
-                dataType: "json",
-                //提交json对象格式
-                contentType: "application/json",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Authorization", author_code);
-                },
-                success: function (data, state, result) {
-                    console.log("state:" + state);
-                    console.log("success result:" + JSON.stringify(data));
-                    if (state == 'success') {
-                        $.cookie('islogin', 'true', {path: '/'});
-                        $.cookie('author_code', author_code, {path: '/'});
-                        window.location.href = "/pages/main.html";
-                    } else {
+            var apiRequest = new ApiRequest();
+            apiRequest.type = "POST";
+            apiRequest.url = "http://localhost:8080/api/users/login?username=" + username +"&password=" + password;
+//            var dtd = $.Deferred();
+            $.when(apiRequest.send())
+            .done(function (data, state, result) {
+                console.log("state:" + state);
+                console.log("success result:" + JSON.stringify(data));
+                if (state == 'success') {
+                    $.cookie('islogin', 'true', {path: '/'});
+                    $.cookie('author_code', author_code, {path: '/'});
+                    window.location.href = "/pages/main.html";
+//                    alert("success");
+                } else {
 //                        alert("error");
-                    }
-                },
-                error: function (result, state) {
-                    console.log("state: " + state + ", status: " + result.status + ", statusText: " + result.statusText);
-                    alert("error");
                 }
+            })
+            .fail(function (data, result, state) {
+                console.log("state: " + state + ", status: " + result.status + ", statusText: " + result.statusText);
+                alert("error");
             });
         });
     });
