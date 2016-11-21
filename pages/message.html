@@ -8,7 +8,7 @@ layout: base_page
 <script type="text/javascript">
 
     var tableGen = new TableGen();
-    tableGen.editFields = new Array('id', 'messageType', 'messageId', 'unitId', 'vesselVisitId', 'billNo', 'manual', 'status', 'reason', 'sendTime', 'createTime', 'notes', 'messageDetail');
+    tableGen.editFields = new Array('id', 'messageType', 'messageId', 'unitId', 'vesselVisitId', 'billNo', 'manual', 'status', 'reason', 'sendTime', 'createTime', 'notes', 'messageDetailId');
     tableGen.apiName = 'messages';
     tableGen.modalID = 'myModal';
     tableGen.tableID = 'table';
@@ -88,7 +88,7 @@ layout: base_page
                 cellStyle: tableGen.formatTableCell
             },{
                 title: '报文详情',
-                field: 'messageDetail',
+                field: 'messageDetailId',
                 align: 'center',
                 visible: false,
                 cellStyle: tableGen.formatTableCell
