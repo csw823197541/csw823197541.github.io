@@ -25,6 +25,25 @@
         height: auto;
         white-space: normal;
     }
+
+    #box{
+        position: relative;
+        margin: 50px auto;
+        width: 700px;
+        height: 300px;
+        border: 2px solid red;
+    }
+    #small{
+        position: absolute;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        width: 80px;
+        height: 50px;
+        margin: auto;
+        border: 2px solid blue;
+    }
 </style>
 <a href="#" target="_blank" class="demo">这是一段测试用的文本，没有实际意义，只是想达到显示效果。</a>
 <button id="loginBnt" type="button">
@@ -59,5 +78,9 @@
         });
     });
 </script>
+
+<div id="box"><div id="small"></div></div>
+
+
 </body>
 </html>
